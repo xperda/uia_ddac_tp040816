@@ -10,7 +10,7 @@
 namespace UIA {
     
     
-    public partial class About {
+    public partial class Registration {
         
         /// <summary>
         /// Label1 control.
