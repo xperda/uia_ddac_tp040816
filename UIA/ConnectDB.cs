@@ -26,14 +26,14 @@ namespace UIA
                     submitSQLQuery(connection,"Populating data...",insertDummyData());
    
     
-                }
+                }//end of using
 
-            }
+            }//end of try
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
-            }
-        }
+            }//end of catch
+        }//end of main
         public static string createQueries()
         {
             return @" CREATE TABLE [user] (
@@ -61,7 +61,7 @@ namespace UIA
 	                [timeofArrival] [varchar] (200) NULL,
 	                [destination] [varchar] (50) NULL,
                 ) ";
-        }
+        }//end of createqueries
         public static string insertDummyData()
         {
             return @"INSERT INTO [dbo].[flight](
@@ -102,8 +102,12 @@ namespace UIA
 	            [timeofArrival] ,
 	            [destination] ,
 	            [status]
-                ) VALUES(5, '17 January 2017 10:30pm' , '17 January 2017 7:00am' ,'Bejing','Active');";
-        }
+                ) VALUES(5, '17 January 2017 10:30pm' , '17 January 2017 7:00am' ,'Bejing','Active');
+
+                INSERT INTO [UIA].[dbo].[user](
+                [userID],[password],[fullname],[passportNo]
+                ) VALUES(1,'password','Desmond Lim','ABCDEFGH');"; 
+        }//end of insertdummydata
         static void submitSQLQuery(SqlConnection connection,string tsqlPurpose,string tsqlSourceCode,string parameterName = null,string parameterValue = null){
             Console.WriteLine();
             Console.WriteLine("=================================");
@@ -119,8 +123,8 @@ namespace UIA
                 }
                 int rowsAffected = command.ExecuteNonQuery();
                 Console.WriteLine(rowsAffected + " = rows affected.");
-                }
+               
             }
-        } // EndOfClass
+        } // endofsubmitSQLQuery
     }//end of ConnectDB class
 }
