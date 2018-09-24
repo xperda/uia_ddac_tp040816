@@ -41,14 +41,14 @@ namespace UIA
 
         protected void btnFlight_Click(object sender, EventArgs e)
         {
-            if (Request.IsAuthenticated)
-            {
+           // if (Request.IsAuthenticated)
+           // {
                 Response.Redirect("Flight.aspx");
-            }
-            else
-            {
-                lblmsgflight.Visible = true;
-            }
+           //}
+           // else
+           // {
+            //    lblmsgflight.Visible = true;
+           //}
         }
     }
 }

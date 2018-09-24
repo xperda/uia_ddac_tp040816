@@ -13,6 +13,15 @@ namespace UIA {
     public partial class Flight {
         
         /// <summary>
+        /// labelFlights control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelFlights;
+        
+        /// <summary>
         /// flightView control.
         /// </summary>
         /// <remarks>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -7,26 +9,21 @@ namespace UIA
 {
     public class ConnectDB
     {
-        static void Main(string[] args)
+        static void connectDB()
         {
             try
             {
                 //Source code reference: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-dotnet-visual-studio
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "your_server.database.windows.net";
-                builder.UserID = "your_user";
-                builder.Password = "your_password";
-                builder.InitialCatalog = "your_database";
+                //Source code reference: https://stackoverflow.com/questions/18605533/connecting-to-sql-server-using-windows-authentication
+               SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conn"].ToString());
+                       
+               conn.Open();
 
-                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-                {
-                    connection.Open();
+               submitSQLQuery(conn,"Creating Tables...",createQueries());
+               submitSQLQuery(conn,"Populating data...",insertDummyData());
 
-                    submitSQLQuery(connection,"Creating Tables...",createQueries());
-                    submitSQLQuery(connection,"Populating data...",insertDummyData());
+                conn.Close();
    
-    
-                }//end of using
 
             }//end of try
             catch (SqlException e)
