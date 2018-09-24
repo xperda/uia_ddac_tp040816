@@ -54,6 +54,7 @@
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
+                    <!--TODO Authentication indicator in navigation bar -->
                     <ul>
                         <li><a runat="server" href="~/Reservation.aspx" visible="false">Make Reservation</a></li>
                         <li><a runat="server" href="~/View.aspx" visible="false">View Reservation</a></li>
