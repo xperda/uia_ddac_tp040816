@@ -1,22 +1,24 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="UIA.About" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.cs" Inherits="UIA.Login" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">   
     <h2>Login</h2>
+    <br/>
     <p>
-        <asp:Label ID="Label_Message" runat="server" Font-Size="Medium" />
-    <br />
-
-    <asp:Label ID="lblusername" runat="server" Text="Username: "/>
-
-    <asp:TextBox ID="tbloginusername" runat="server"/>
+    <asp:Label id="lblusername" runat="server" Text="Username: "/>
+    <asp:TextBox id="tbloginusername" runat="server"/>
+    </p>
+    <p>
+    <asp:Label runat="server" id ="lblvalidusername" Text="No such username exist." Visible="False" ForeColor="Red" />
+    </p>
+    <p>
+    <asp:Label id="lblpassword" runat="server" Text="Password: " />
+    <asp:TextBox id="tbloginpassword" runat="server" TextMode="Password" />
     </p>
 
     <p>
-    <asp:Label ID="lblpassword" runat="server" Text="Password: " />
-    <asp:TextBox ID="tbloginpassword" runat="server" TextMode="Password" />
+         <asp:Label runat="server" id ="lblvalidpassword" Text="Wrong password." Visible="False" ForeColor="Red" />
     </p>
-    <p>
 
-    <asp:Button ID="btnLogin" runat="server" onclick="btnLogin_Click" Text="Login"/>
-</p>
+    <asp:Button runat="server" id="btnLogin" Text="Login" OnClick="btnLogin_Click" />
+    
 </asp:Content>

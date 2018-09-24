@@ -10,16 +10,7 @@
 namespace UIA {
     
     
-    public partial class About {
-        
-        /// <summary>
-        /// Label_Message control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Message;
+    public partial class Login {
         
         /// <summary>
         /// lblusername control.
@@ -40,6 +31,15 @@ namespace UIA {
         protected global::System.Web.UI.WebControls.TextBox tbloginusername;
         
         /// <summary>
+        /// lblvalidusername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblvalidusername;
+        
+        /// <summary>
         /// lblpassword control.
         /// </summary>
         /// <remarks>
@@ -56,6 +56,15 @@ namespace UIA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbloginpassword;
+        
+        /// <summary>
+        /// lblvalidpassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblvalidpassword;
         
         /// <summary>
         /// btnLogin control.
