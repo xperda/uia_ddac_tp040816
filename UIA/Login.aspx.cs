@@ -15,15 +15,15 @@ namespace UIA
 
         }
 
-        protected void initializeTextBoxes()
-        {
-            tbloginusername.Text = String.Empty;
-            tbloginpassword.Text = String.Empty;
-        }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registration.aspx");
         }
     }
 }

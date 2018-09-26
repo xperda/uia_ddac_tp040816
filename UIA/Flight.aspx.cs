@@ -14,7 +14,7 @@ namespace UIA
 
     public partial class Flight : System.Web.UI.Page
     {
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conn"].ToString());
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ToString());
         SqlDataAdapter da;
         DataSet dst;
         // Code reference from https://www.aspsnippets.com/Articles/Display-data-in-GridView-in-ASPNet-from-SQL-Server.aspx
@@ -27,7 +27,7 @@ namespace UIA
 
             flightView.PageIndex = e.NewPageIndex;
   
-            string query = "SELECT [flightID],[timeofDepature],[timeofArrival],[destination],[status] FROM [flight]";
+            string query = "SELECT [flightID],[timeofDepature],[timeofArrival],[destination],[status] FROM [dbo].[flight]";
             da = new SqlDataAdapter(query, conn);
             dst = new DataSet();
             da.Fill(dst);

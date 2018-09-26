@@ -18,7 +18,14 @@
     <p>
          <asp:Label runat="server" id ="lblvalidpassword" Text="Wrong password." Visible="False" ForeColor="Red" />
     </p>
-
+    <p>
     <asp:Button runat="server" id="btnLogin" Text="Login" OnClick="btnLogin_Click" />
+    </p>
+    <p>
+    <asp:Label runat="server" id ="lblregister" Text="No account? Register now." />
+    </p>
+    <p>
+    <asp:Button runat="server" id="btnRegister" Text="Register" OnClick="btnRegister_Click" />
+    </p>
     
 </asp:Content>
