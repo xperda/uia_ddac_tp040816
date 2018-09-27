@@ -1,7 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Registration.aspx.cs" Inherits="UIA.Registration" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Register A New User Account</h2>
+<div class ="jumbotron">
+    <h2><b>Register A New User Account</b></h2>
     <p>
     <asp:Label ID="Label1" runat="server" Text="Username: "/>
     <asp:TextBox ID="tbusername" runat="server" />
@@ -25,4 +26,5 @@
     <p>
         <asp:Label ID="Label5" runat="server" Visible= "False" ForeColor="Red" Text="Some fields are empty.Please input your details."/>
     </p>
+</div>
 </asp:Content>

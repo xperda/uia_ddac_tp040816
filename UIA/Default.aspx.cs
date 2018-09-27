@@ -14,41 +14,15 @@ namespace UIA
    
         }
 
-        protected void btnReserve_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (Request.IsAuthenticated)
-            {
-                Response.Redirect("Reservation.aspx");
-            }
-            else
-            {
-                lblmsgreserve.Visible = true;
-                
-            }
+            Response.Redirect("Login.aspx");
         }
 
-        protected void btnView_Click(object sender, EventArgs e)
+        protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if (Request.IsAuthenticated)
-            {
-                Response.Redirect("View.aspx");
-            }
-            else
-            {
-                lblmsgview.Visible = true;
-            }
-        }
+            Response.Redirect("Registration.aspx");
 
-        protected void btnFlight_Click(object sender, EventArgs e)
-        {
-           // if (Request.IsAuthenticated)
-           // {
-                Response.Redirect("Flight.aspx");
-           //}
-           // else
-           // {
-            //    lblmsgflight.Visible = true;
-           //}
         }
     }
 }

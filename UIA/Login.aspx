@@ -22,6 +22,10 @@
     <asp:Button runat="server" id="btnLogin" Text="Login" OnClick="btnLogin_Click" />
     </p>
     <p>
+        <asp:Label runat="server" id ="loginvalid" Text="Wrong Credentials. Try again." Visible="False" ForeColor="Red" />
+    </p>
+    
+    <p>
     <asp:Label runat="server" id ="lblregister" Text="No account? Register now." />
     </p>
     <p>

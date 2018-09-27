@@ -16,23 +16,39 @@ namespace UIA
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ToString());
         SqlDataAdapter da;
-        DataSet dst;
-        // Code reference from https://www.aspsnippets.com/Articles/Display-data-in-GridView-in-ASPNet-from-SQL-Server.aspx
+        DataSet dt;
+        // Code reference from http://www.c-sharpcorner.com/UploadFile/47548d/simple-insert-select-update-and-delete-in-Asp-Net-using-mysq/
         protected void Page_Load(object sender, EventArgs e)
         {
+            BindGridView();
+        }
+
+        private void BindGridView()
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM [flight]",conn);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataSet();
+                da.Fill(dt);
+                flightGrid.DataSource = dt;
+                flightGrid.DataBind();
+
+            }
+            catch (SqlException ex)
+            {
+                Console.Write(ex.ToString());
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+            }
 
         }
-        protected void flightView_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
 
-            flightView.PageIndex = e.NewPageIndex;
-  
-            string query = "SELECT [flightID],[timeofDepature],[timeofArrival],[destination],[status] FROM [dbo].[flight]";
-            da = new SqlDataAdapter(query, conn);
-            dst = new DataSet();
-            da.Fill(dst);
-            flightView.DataSource = dst;
-            flightView.DataBind();
-        } 
     }
 }

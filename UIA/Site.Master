@@ -49,15 +49,10 @@
                     <a class="navbar-brand" runat="server" href="~/">Ukraine International Airlines</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">    
                         <li><a runat="server" href="~/" >Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                        <li><a runat="server" href="~/Login.aspx" id="navlogin" visible="true" >Login</a></li>
-                        <li><a runat="server" href="~/Reservation.aspx" visible="false">Make Reservation</a></li>
-                        <li><a runat="server" href="~/View.aspx" visible="false">View Reservation</a></li>
-                        <li><a runat="server" href="~/Flight.aspx" visible="false">Flight Schedule</a></li>
-                        <li><a runat="server" href="~/" id="nalogout" visible="false">Logout</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li> 
                     </ul>
                   
                 </div>

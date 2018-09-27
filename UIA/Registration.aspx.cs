@@ -13,7 +13,9 @@ namespace UIA
 {
     public partial class Registration : System.Web.UI.Page
     {
-    
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ToString());
+        SqlDataAdapter da;
+        DataTable dt;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +25,7 @@ namespace UIA
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ToString());
+            
          
             try
             {
@@ -35,13 +37,15 @@ namespace UIA
                 else
                 {
                     con.Open();
-                    SqlCommand query = new SqlCommand("INSERT INTO [dbo].[user] VALUES(@username, @password,@fullname,@passportNo) ", con);
-                    query.Parameters.AddWithValue("username", tbusername.Text);
-                    query.Parameters.AddWithValue("password", tbpassword.Text);
-                    query.Parameters.AddWithValue("fullname", tbfullname.Text);
-                    query.Parameters.AddWithValue("passportNo", tbpassport.Text);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO [user] VALUES(@username, @password,@fullname,@passportNo)", con);
+                    cmd.Parameters.AddWithValue("username", tbusername.Text);
+                    cmd.Parameters.AddWithValue("password", tbpassword.Text);
+                    cmd.Parameters.AddWithValue("fullname", tbfullname.Text);
+                    cmd.Parameters.AddWithValue("passportNo", tbpassport.Text);
 
-                    query.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                    Label5.Text = "User succesfully registered";
+                    Label5.Visible = true;
 
                     Response.Redirect("Login.aspx");
                 }

@@ -13,42 +13,6 @@ namespace UIA {
     public partial class _Default {
         
         /// <summary>
-        /// btnReserve control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReserve;
-        
-        /// <summary>
-        /// lblmsgreserve control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsgreserve;
-        
-        /// <summary>
-        /// btnView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnView;
-        
-        /// <summary>
-        /// lblmsgview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsgview;
-        
-        /// <summary>
         /// btnFlight control.
         /// </summary>
         /// <remarks>
@@ -58,12 +22,12 @@ namespace UIA {
         protected global::System.Web.UI.WebControls.Button btnFlight;
         
         /// <summary>
-        /// lblmsgflight control.
+        /// btnRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsgflight;
+        protected global::System.Web.UI.WebControls.Button btnRegister;
     }
 }

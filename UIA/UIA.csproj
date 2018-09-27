@@ -111,9 +111,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\UIA.mdf" />
+    <Content Include="App_Data\UIA_log.ldf">
+      <DependentUpon>UIA.mdf</DependentUpon>
+    </Content>
     <Content Include="Flight.aspx" />
     <Content Include="images\airplane_stock.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="Members.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
@@ -186,6 +191,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Members.aspx.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members.aspx.designer.cs">
+      <DependentUpon>Members.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,9 +268,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

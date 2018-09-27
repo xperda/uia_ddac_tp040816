@@ -13,12 +13,21 @@ namespace UIA {
     public partial class Reservation {
         
         /// <summary>
-        /// reserveView control.
+        /// labelFlights control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView reserveView;
+        protected global::System.Web.UI.WebControls.Label labelFlights;
+        
+        /// <summary>
+        /// reservationGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView reservationGrid;
     }
 }
