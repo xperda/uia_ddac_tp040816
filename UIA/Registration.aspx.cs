@@ -14,9 +14,8 @@ namespace UIA
     public partial class Registration : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ToString());
-        SqlDataAdapter da;
-        DataTable dt;
-
+        SqlDataReader dr;
+  
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,8 +24,7 @@ namespace UIA
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             
-            
-         
+     
             try
             {
                 
@@ -36,16 +34,18 @@ namespace UIA
                 }
                 else
                 {
+                    
+                    SqlCommand cmd = new SqlCommand("INSERT INTO [user] ([username], [password],[fullname],[passportNo]) VALUES(@username, @password,@fullname,@passportNo);", con);
+                    cmd.Parameters.AddWithValue("@username", tbusername.Text);
+                    cmd.Parameters.AddWithValue("@password", tbpassword.Text);
+                    cmd.Parameters.AddWithValue("@fullname", tbfullname.Text);
+                    cmd.Parameters.AddWithValue("@passportNo", tbpassport.Text);
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO [user] VALUES(@username, @password,@fullname,@passportNo)", con);
-                    cmd.Parameters.AddWithValue("username", tbusername.Text);
-                    cmd.Parameters.AddWithValue("password", tbpassword.Text);
-                    cmd.Parameters.AddWithValue("fullname", tbfullname.Text);
-                    cmd.Parameters.AddWithValue("passportNo", tbpassport.Text);
-
                     cmd.ExecuteNonQuery();
+                    cmd.Dispose();
                     Label5.Text = "User succesfully registered";
                     Label5.Visible = true;
+
 
                     Response.Redirect("Login.aspx");
                 }
@@ -53,6 +53,9 @@ namespace UIA
             catch (SqlException ex) 
             {
                 Console.WriteLine(ex.ToString());
+            }
+            finally{
+                con.Close();
             }
 
         }
