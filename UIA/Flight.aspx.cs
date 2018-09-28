@@ -49,6 +49,10 @@ namespace UIA
             }
 
         }
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Members.aspx");
+        }
 
     }
 }

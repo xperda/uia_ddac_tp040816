@@ -14,6 +14,7 @@
         <asp:BoundField ItemStyle-Width="150px" DataField="status" HeaderText="Status" />
     </Columns>    
 </asp:GridView>
+<asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
 </div>
 
 

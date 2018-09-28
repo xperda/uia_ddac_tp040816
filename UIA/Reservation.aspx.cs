@@ -51,16 +51,27 @@ namespace UIA
 
         }
 
-        protected void lnkReserve_Click(object sender, EventArgs e)
+        protected void reservationGrid_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             try
             {
-              //  int flightID = Convert.ToInt32(reservationGrid.DataKeys[e.RowIndex].Value);
+                GridViewRow row = reservationGrid.SelectedRow;
+                int flightID;
+                int.TryParse(row.Cells[1].Text,out flightID);
                 conn.Open();
-                SqlCommand cmd1 = new SqlCommand("INSERT INTO [reservation](flightID,timeofDepature,timeofArrival,destination) VALUES (SELECT flightID,timeofDepature,timeofArrival,destination FROM [flights] WHERE flightID =");
-                cmd1.ExecuteNonQuery();
-                cmd1.Dispose();
-                BindGridView();
+                SqlCommand cmd = new SqlCommand(@"INSERT INTO [reservation]([username][fullname],[passportNo],[flightID],[timeofDepature],[timeofArrival],[destination])
+                    SELECT u.[username],u.[fullname],u.[passportNo],f.[flightID],f.[timeofDepature],f.[timeofArrival],f.[destination]
+                    FROM[user] u CROSS JOIN [flight] f 
+                    WHERE u.username =@username and f.flightID =@flightID;",conn);
+                cmd.Parameters.AddWithValue("@username",username);
+                cmd.Parameters.AddWithValue("@flightID",flightID);
+                cmd.ExecuteNonQuery();
+
+                labeldisplay.Text = "Flight " + flightID + " has been reserved";
+                labeldisplay.Visible = true;
+                cmd.Dispose();
+                
             }
             catch (SqlException ex)
             {
@@ -70,27 +81,14 @@ namespace UIA
             finally
             {
                 conn.Close();
+                
             }
         }
-
-protected void reservationGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void btnBack_Click(object sender, EventArgs e)
         {
-            try {
-                conn.Open();
-                int flightID = Convert.ToInt32(reservationGrid.DataKeys[e.RowIndex].Value);
-                SqlCommand cmd2 = new SqlCommand("DELETE FROM [flights] WHERE flightID ="+flightID);    
-                cmd2.ExecuteNonQuery();            
-                cmd2.Dispose();
-                BindGridView();
-
-            } catch (SqlException ex) {
-
-                Console.Write(ex.ToString());
-            } finally {
-                conn.Close();
-            }
-
+            Response.Redirect("Members.aspx");
         }
+
     }
 
    

@@ -15,10 +15,11 @@ namespace UIA
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ToString());
         SqlDataAdapter da;
         DataTable dt;
-
+        string username;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            username = Session["user"].ToString();
             BindGridView();
         }
 
@@ -29,7 +30,8 @@ namespace UIA
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM [reservation]",con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM [reservation] WHERE username=@username ;", con);
+                cmd.Parameters.AddWithValue("@username",username);
                 da = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);
@@ -54,9 +56,10 @@ namespace UIA
         protected void reservation_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try{
+                GridViewRow row = viewGrid.SelectedRow;
                 con.Open();
-                int rID = Convert.ToInt32(viewGrid.DataKeys[e.RowIndex].Value);
-               SqlCommand cmd = new SqlCommand("DELETE FROM [reservation] WHERE reservationID=" + rID + ";", con);
+                int fID = Convert.ToInt32(viewGrid.DataKeys[e.RowIndex].Value);
+               SqlCommand cmd = new SqlCommand("DELETE FROM [reservation] WHERE reservationID=" + fID + ";", con);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 viewGrid.EditIndex = -1;
@@ -70,6 +73,11 @@ namespace UIA
             {
                 con.Close();
             }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Members.aspx");
         }
     }
 }

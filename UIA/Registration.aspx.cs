@@ -14,7 +14,7 @@ namespace UIA
     public partial class Registration : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ToString());
-        SqlDataReader dr;
+
   
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -4,23 +4,19 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 <div class="jumbotron">
 <p>
-<asp:Label id="labelFlights" runat="server" Text ="Flights" Font-Color ="Red" Font-Size="Medium" /> 
+<asp:Label id="labelFlights" runat="server" Text ="Available Flights to Reserve" ForeColor ="Red" Font-Size="Medium" /> 
 </p>
-<asp:GridView ID="reservationGrid" runat="server" DataKeyNames="RID"    
-OnRowDeleting="reservationGrid_RowDeleting">
+<asp:GridView ID="reservationGrid" runat="server" AutoGenerateColumns="True" OnSelectedIndexChanged="reservationGrid_SelectedIndexChanged">
     <Columns> 
-        <asp:TemplateField>
-        <ItemTemplate>
-            <asp:LinkButton runat = "server" id="lnkReserve" text ="Reserve"  OnClick="lnkReserve_Click" />
-             </ItemTemplate>
-        </asp:TemplateField>
-        <asp:BoundField ItemStyle-Width="150px" DataField="flightID" HeaderText="Flight ID" />
-        <asp:BoundField ItemStyle-Width="150px" DataField="timeofDepature" HeaderText="Depature" />
-        <asp:BoundField ItemStyle-Width="150px" DataField="timeofArrival" HeaderText="Arrival" />
-        <asp:BoundField ItemStyle-Width="150px" DataField="destination" HeaderText="Destination" />
-        <asp:BoundField ItemStyle-Width="150px" DataField="status" HeaderText="Status" />     
+            <asp:CommandField HeaderText="Reserve" ShowSelectButton="True" />          
     </Columns>    
 </asp:GridView>
+
+<asp:Label runat="server" ID="labeldisplay" Visible="false" ForeColor="Red" />
+<p>
+    <asp:Button runat="server" ID="btnBack" Text="Back" OnClick="btnBack_Click" />
+</p>
+
 </div>
 
 
