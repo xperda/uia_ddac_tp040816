@@ -56,14 +56,19 @@ namespace UIA
         protected void reservation_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try{
-                GridViewRow row = viewGrid.SelectedRow;
+               
                 con.Open();
-                int fID = Convert.ToInt32(viewGrid.DataKeys[e.RowIndex].Value);
-               SqlCommand cmd = new SqlCommand("DELETE FROM [reservation] WHERE reservationID=" + fID + ";", con);
+                int rID = Convert.ToInt32(viewGrid.DataKeys[e.RowIndex].Value);
+               SqlCommand cmd = new SqlCommand("DELETE FROM [reservation] WHERE reservationID=@rID;", con);
+                cmd.Parameters.AddWithValue("@rID", rID);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
-                viewGrid.EditIndex = -1;
+                viewGrid.EditIndex= -1;
                 BindGridView();
+
+                labeldisplay.Text = "Reservation with ID " + rID + " has been cancel";
+                labeldisplay.Visible = true;
+                
             }
             catch (SqlException ex)
             {

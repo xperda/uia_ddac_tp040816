@@ -34,13 +34,13 @@ namespace UIA
                 }
                 else
                 {
-                    
-                    SqlCommand cmd = new SqlCommand("INSERT INTO [user] ([username], [password],[fullname],[passportNo]) VALUES(@username, @password,@fullname,@passportNo);", con);
-                    cmd.Parameters.AddWithValue("@username", tbusername.Text);
-                    cmd.Parameters.AddWithValue("@password", tbpassword.Text);
-                    cmd.Parameters.AddWithValue("@fullname", tbfullname.Text);
-                    cmd.Parameters.AddWithValue("@passportNo", tbpassport.Text);
                     con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO [user] ([username], [password],[fullname],[passportNo]) VALUES(@username, @password,@fullname,@passportNo);", con);
+                    cmd.Parameters.AddWithValue("@username", tbusername.Text.ToString());
+                    cmd.Parameters.AddWithValue("@password", tbpassword.Text.ToString());
+                    cmd.Parameters.AddWithValue("@fullname", tbfullname.Text.ToString());
+                    cmd.Parameters.AddWithValue("@passportNo", tbpassport.Text.ToString());
+                    
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
                     Label5.Text = "User succesfully registered";

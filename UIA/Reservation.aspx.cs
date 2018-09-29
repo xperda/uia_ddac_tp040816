@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -60,23 +61,30 @@ namespace UIA
                 int flightID;
                 int.TryParse(row.Cells[1].Text,out flightID);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(@"INSERT INTO [reservation]([username][fullname],[passportNo],[flightID],[timeofDepature],[timeofArrival],[destination])
-                    SELECT u.[username],u.[fullname],u.[passportNo],f.[flightID],f.[timeofDepature],f.[timeofArrival],f.[destination]
-                    FROM[user] u CROSS JOIN [flight] f 
-                    WHERE u.username =@username and f.flightID =@flightID;",conn);
+                StringBuilder query = new StringBuilder();
+                query.AppendLine("INSERT INTO [reservation]([username],[fullname],[passportNo],[flightID],[timeofDepature],[timeofArrival],[destination])");
+                query.AppendLine("SELECT u.[username],u.[fullname],u.[passportNo],f.[flightID],f.[timeofDepature],f.[timeofArrival],f.[destination]");
+                query.AppendLine("FROM [user] u , [flight] f ");
+                query.AppendLine("WHERE u.username =@username and f.flightID =@flightID;");
+
+   
+                SqlCommand cmd = new SqlCommand(query.ToString(),conn);
                 cmd.Parameters.AddWithValue("@username",username);
                 cmd.Parameters.AddWithValue("@flightID",flightID);
+                
                 cmd.ExecuteNonQuery();
 
-                labeldisplay.Text = "Flight " + flightID + " has been reserved";
-                labeldisplay.Visible = true;
-                cmd.Dispose();
                 
+                    labeldisplay.Text = "Flight " + flightID + " has been reserved";
+                    labeldisplay.Visible = true;
+                    cmd.Dispose();
+               
             }
             catch (SqlException ex)
             {
-
                 Console.Write(ex.ToString());
+                labeldisplay.Text = "Failed to Make Reservation";
+                labeldisplay.Visible = true;
             }
             finally
             {

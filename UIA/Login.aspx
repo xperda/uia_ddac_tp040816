@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.cs" Inherits="UIA.Login" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">   
+    <div class ="jumbotron">
     <h2>Login</h2>
     <br/>
     <p>
@@ -31,5 +32,5 @@
     <p>
     <asp:Button runat="server" id="btnRegister" Text="Register" OnClick="btnRegister_Click" />
     </p>
-    
+    </div>
 </asp:Content>
